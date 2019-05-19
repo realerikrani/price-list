@@ -4,12 +4,22 @@ module.exports = {
     node: true,
   },
   extends: [
-    'plugin:vue/essential',
+    'plugin:vue/recommended',
     '@vue/airbnb',
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-extraneous-dependencies': [
+      'error',
+      {
+        devDependencies: [
+          '.storybook/**',
+          'stories/**',
+          'tests/**',
+        ],
+      },
+    ],
   },
   parserOptions: {
     parser: 'babel-eslint',
