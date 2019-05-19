@@ -1,5 +1,7 @@
 import { storiesOf } from '@storybook/vue';
-import ProductItem from '../src/components/ProductItem.vue';
+import ProductItem from '@/components/ProductItem.vue';
+
+const template = '<ProductItem :key="key" :info="info" :extra-info="extraInfo" :price="price"></ProductItem>';
 
 storiesOf('ProductItem', module)
   .add('with extra info', () => ({
@@ -12,7 +14,7 @@ storiesOf('ProductItem', module)
         price: 'any price',
       };
     },
-    template: '<ProductItem :key="key" :info="info" :extra-info="extraInfo" :price="price"></ProductItem>',
+    template,
   }))
   .add('without extra info', () => ({
     components: { ProductItem },
@@ -24,5 +26,5 @@ storiesOf('ProductItem', module)
         price: 'any price',
       };
     },
-    template: '<ProductItem :key="key" :info="info" :extra-info="extraInfo" :price="price"></ProductItem>',
+    template,
   }));
