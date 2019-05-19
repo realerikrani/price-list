@@ -11,7 +11,7 @@ describe('ProductItem.vue', () => {
     // when
     const wrapper = shallowMount(ProductItem, { propsData: { price, info } });
 
-    // them
+    // then
     expect(wrapper.find('.product__price').text()).to.include(price);
     expect(wrapper.find('.product__info').text()).to.include(info);
   });
@@ -29,7 +29,7 @@ describe('ProductItem.vue', () => {
       },
     });
 
-    // them
+    // then
     expect(wrapper.find('.product__extra').text()).to.include(extraInfo);
   });
 
@@ -41,7 +41,7 @@ describe('ProductItem.vue', () => {
     // when
     const wrapper = shallowMount(ProductItem, { propsData: { price, info } });
 
-    // them
+    // then
     expect(wrapper.find('.product__extra').exists()).to.be.equal(false);
   });
 });
