@@ -3,10 +3,12 @@ language: node_js
 node_js:
   - '10'
 
-cache: npm
-
 install:
   - npm ci
+
+cache:
+  directories:
+    - '$HOME/.npm'
 
 script:
   - npm run test:unit
