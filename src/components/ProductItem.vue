@@ -17,7 +17,6 @@
 
 <script>
 export default {
-  name: 'ProductItem',
   props: {
     info: {
       type: String,
