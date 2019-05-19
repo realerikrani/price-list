@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/vue';
-import ProductItem from '../src/components/ProductItem.vue';
+import ProductItem from '@/components/ProductItem.vue';
 
 storiesOf('ProductItem', module)
   .add('with extra info', () => ({
