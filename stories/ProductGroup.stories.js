@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/vue';
 import ProductGroup from '@/components/ProductGroup.vue';
 
 const sampleGroup = {
-  title: 'any group title',
-  info: null,
+  groupTitle: 'any group title',
+  groupInfo: null,
 };
 
 const products = [
@@ -27,35 +27,37 @@ const products = [
   },
 ];
 
+const template = '<ProductGroup :groupTitle="groupTitle" :groupInfo="groupInfo" :products="products"></ProductGroup>';
+
 storiesOf('ProductGroup', module)
   .add('with products and without info', () => ({
     components: { ProductGroup },
     data() {
       return {
-        group: sampleGroup,
+        ...sampleGroup,
         products,
       };
     },
-    template: '<ProductGroup :group="group" :products="products"></ProductGroup>',
+    template,
   }))
   .add('with products and with info', () => ({
     components: { ProductGroup },
     data() {
-      const group = { ...sampleGroup, info: 'any group info' };
       return {
-        group,
+        ...sampleGroup,
+        groupInfo: 'any group info',
         products,
       };
     },
-    template: '<ProductGroup :group="group" :products="products"></ProductGroup>',
+    template,
   }))
   .add('without products', () => ({
     components: { ProductGroup },
     data() {
       return {
-        group: sampleGroup,
+        ...sampleGroup,
         products: [],
       };
     },
-    template: '<ProductGroup :group="group" :products="products"></ProductGroup>',
+    template,
   }));
