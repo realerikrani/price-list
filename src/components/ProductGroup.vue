@@ -65,7 +65,7 @@ export default {
   margin: 2rem;
   text-align: center;
   page-break-inside: avoid;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.16);
   padding: 0.5rem;
 
   &__title {
