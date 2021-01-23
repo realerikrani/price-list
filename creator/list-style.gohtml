@@ -1,0 +1,75 @@
+{{ define "list-style" }}
+<style>
+@page {
+    size: A5 portrait;
+    margin-left: 2cm;
+    margin-right: 2cm;
+}
+
+.group {
+    font-family: roboto, sans-serif;
+    text-align: left;
+    margin: 2rem;
+    text-align: center;
+    page-break-inside: avoid;
+    box-shadow: 0 0.1rem 0.1rem rgba(0, 0, 0, 0.16);
+    padding: 0.5rem;
+}
+
+.group__title {
+    font-size: 2vw;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+@media print {
+    .group__title {
+        font-size: 3.5vw;
+        font-weight: bold;
+    }
+}
+
+.group__info {
+    font-size: 1vw;
+}
+
+@media print {
+    .group__info {
+        font-size: 1.5vw;
+    }
+}
+
+.product {
+    font-family: roboto, sans-serif;
+    display: grid;
+    text-align: right;
+    grid-template-columns: 60% 40%;
+    font-size: 2vw;
+    padding: 0.5rem;
+    border-top: 1px solid lightgrey;
+}
+
+@media print {
+    .product {
+        font-size: 3vw;
+    }
+}
+
+.product__extra {
+    font-size: 1vw;
+}
+
+@media print {
+    .product__extra {
+        font-size: 1.5vw;
+    }
+}
+
+.product__price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+</style>
+{{- end }}

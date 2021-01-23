@@ -1,0 +1,11 @@
+{{ define "product" }}
+<div class="product">
+    <div class="product__info">
+        {{ .Info }}
+        {{- if .ExtraInfo }}
+        <div class="product__extra">{{ .ExtraInfo }}</div>
+        {{- end }}
+    </div>
+    <div class="product__price">{{ .Price }}</div>
+</div>
+{{- end }}

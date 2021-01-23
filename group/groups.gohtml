@@ -1,0 +1,13 @@
+{{ define "groups" }}
+    {{- $groups := $.GroupsEnvelope.Groups }}
+    {{- $products := $.ProductsEnvelope.Products }}
+    {{- range $groupID := $groups.IDs }}
+        {{- $group := index $groups.Entities $groupID }}
+        <div class="group">
+            {{- template "group-header" $group }}
+            {{- range $products }}
+                {{- if eq .GroupID $groupID }}{{ template "product" . }}{{- end }}
+            {{- end }}
+        </div>
+    {{- end }}
+{{- end }}
