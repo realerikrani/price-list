@@ -7,7 +7,7 @@ binary:
 	docker run --rm \
 	-v $(PWD):/app \
 	-w /app $(GO_DOCKER_IMAGE) \
-	make binary_macos
+	make -j 3 binary_windows binary_linux binary_macos
 
 .PHONY: build_dir
 build_dir:
