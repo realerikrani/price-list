@@ -2,9 +2,9 @@ package creator
 
 import (
 	"encoding/json"
-	"html/template"
 	"io/ioutil"
 	"os"
+	"text/template"
 
 	"github.com/realerikrani/price-list/group"
 	"github.com/realerikrani/price-list/product"
@@ -18,7 +18,7 @@ type Context struct {
 }
 
 // CreatePriceList ...
-func CreatePriceList(input string, output string) error {
+func CreatePriceList(input string, output string, templates template.Template) error {
 	data, err := ioutil.ReadFile(input)
 	if err != nil {
 		return err
@@ -43,17 +43,6 @@ func CreatePriceList(input string, output string) error {
 	}
 
 	context := Context{"price-list", products, groups}
-
-	templates, err := template.ParseFiles(
-		"creator/list.gohtml",
-		"creator/list-style.gohtml",
-		"product/product.gohtml",
-		"group/group_header.gohtml",
-		"group/groups.gohtml",
-	)
-	if err != nil {
-		return err
-	}
 
 	if err = templates.Execute(f, context); err != nil {
 		f.Close()

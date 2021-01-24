@@ -1,13 +1,13 @@
 APP_NAME := price-list
 BUILD_DIR=build
-GO_DOCKER_IMAGE := golang:1.15
+GO_DOCKER_IMAGE := golang:1.16beta1
 
 .PHONY: binary
 binary:
 	docker run --rm \
 	-v $(PWD):/app \
 	-w /app $(GO_DOCKER_IMAGE) \
-	make -j 3 binary_windows binary_linux binary_macos
+	make binary_macos
 
 .PHONY: build_dir
 build_dir:
