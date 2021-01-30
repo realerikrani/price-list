@@ -5,12 +5,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  {{ define "title" }}{{.Title}}{{ end }}
-  <title>{{ template "title" . }}</title>
+  <title>{{ .Title }}</title>
   {{ template "list-style" . }}
 </head>
 
 <body>
+  <div class="notice">
+    <div class="notice__title">{{ .Notice }}</div>
+  </div>
   {{- template "groups" . }}
 </body>
 
