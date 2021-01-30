@@ -1,13 +1,31 @@
 {{ define "list-style" }}
 <style>
+* {
+    font-family: roboto, sans-serif;
+}
+
 @page {
     size: A5 portrait;
     margin-left: 2cm;
     margin-right: 2cm;
 }
 
+.notice {
+    display: flex;
+    justify-content: center;
+}
+
+.notice__title {
+    font-size: 2vw;
+}
+
+@media print {
+    .notice__title {
+        font-size: 3vw;
+    }
+}
+
 .group {
-    font-family: roboto, sans-serif;
     text-align: left;
     margin: 2rem;
     text-align: center;
@@ -40,7 +58,6 @@
 }
 
 .product {
-    font-family: roboto, sans-serif;
     display: grid;
     text-align: right;
     grid-template-columns: 60% 40%;

@@ -13,12 +13,15 @@ import (
 // Context for template
 type Context struct {
 	Title            string
+	Notice           string
 	ProductsEnvelope product.Envelope
 	GroupsEnvelope   group.Envelope
 }
 
 // CreatePriceList ...
-func CreatePriceList(input string, output string, templates template.Template) error {
+func CreatePriceList(
+	input string, output string, notice string, templates template.Template,
+) error {
 	data, err := ioutil.ReadFile(input)
 	if err != nil {
 		return err
@@ -42,7 +45,7 @@ func CreatePriceList(input string, output string, templates template.Template) e
 		return err
 	}
 
-	context := Context{"price-list", products, groups}
+	context := Context{"price-list", notice, products, groups}
 
 	if err = templates.Execute(f, context); err != nil {
 		f.Close()
