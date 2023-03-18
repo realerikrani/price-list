@@ -15,12 +15,12 @@ build_dir:
 
 .PHONY: binary_windows
 binary_windows: build_dir
-	GOOS=windows GOARCH=amd64 go build -o $(BUILD_DIR)/$(APP_NAME)-windows.exe
+	GOOS=windows GOARCH=amd64 go build -buildvcs=false -o $(BUILD_DIR)/$(APP_NAME)-windows.exe
 
 .PHONY: binary_linux
 binary_linux: build_dir
-	GOOS=linux GOARCH=amd64 go build -o $(BUILD_DIR)/$(APP_NAME)-linux
+	GOOS=linux GOARCH=amd64 go build -buildvcs=false -o $(BUILD_DIR)/$(APP_NAME)-linux
 
 .PHONY: binary_macos
 binary_macos: build_dir
-	GOOS=darwin GOARCH=amd64 go build -o $(BUILD_DIR)/$(APP_NAME)-macos
+	GOOS=darwin GOARCH=amd64 go build -buildvcs=false -o $(BUILD_DIR)/$(APP_NAME)-macos
