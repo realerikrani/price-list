@@ -1,3 +1,3 @@
 module github.com/realerikrani/price-list
 
-go 1.16
+go 1.20

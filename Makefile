@@ -1,6 +1,6 @@
 APP_NAME := price-list
 BUILD_DIR=build
-GO_DOCKER_IMAGE := golang:1.16beta1
+GO_DOCKER_IMAGE := golang:1.20
 
 .PHONY: binary
 binary:

@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "embed"
+	"embed"
 	"flag"
 	"log"
 	"text/template"
@@ -9,6 +9,9 @@ import (
 
 	"github.com/realerikrani/price-list/creator"
 )
+
+//go:embed tmplhtml/*.gohtml
+var f embed.FS
 
 func main() {
 	input := flag.String("input", "./price-list.json", "a path to a JSON file")
@@ -22,25 +25,18 @@ func main() {
 	)
 	flag.Parse()
 
-	//go:embed tmplhtml/list.gohtml
-	var listHTML string
-	//go:embed tmplhtml/list-style.gohtml
-	var listStyleHTML string
-	//go:embed tmplhtml/product.gohtml
-	var productHTML string
-	//go:embed tmplhtml/group-header.gohtml
-	var groupHeaderHTML string
-	//go:embed tmplhtml/groups.gohtml
-	var groupsHTML string
+	templates, err := template.ParseFS(f,
+		"tmplhtml/list.gohtml",
+		"tmplhtml/list-style.gohtml",
+		"tmplhtml/product.gohtml",
+		"tmplhtml/group-header.gohtml",
+		"tmplhtml/groups.gohtml",
+	)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	tmpl := template.New("tmpl")
-	tmpl.Parse(listHTML)
-	tmpl.Parse(listStyleHTML)
-	tmpl.Parse(productHTML)
-	tmpl.Parse(groupHeaderHTML)
-	tmpl.Parse(groupsHTML)
-
-	if err := creator.CreatePriceList(*input, *output, *notice, *tmpl); err != nil {
+	if err := creator.CreatePriceList(*input, *output, *notice, *templates); err != nil {
 		log.Fatal(err)
 	}
 }
