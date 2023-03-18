@@ -1,13 +1,17 @@
 package creator
 
 import (
+	"bytes"
 	"encoding/json"
-	"io/ioutil"
 	"os"
 	"text/template"
 
 	"github.com/realerikrani/price-list/group"
 	"github.com/realerikrani/price-list/product"
+)
+
+var (
+	utf8BOM = []byte{0xef, 0xbb, 0xbf}
 )
 
 // Context for template
@@ -22,10 +26,11 @@ type Context struct {
 func CreatePriceList(
 	input string, output string, notice string, templates template.Template,
 ) error {
-	data, err := ioutil.ReadFile(input)
+	data, err := os.ReadFile(input)
 	if err != nil {
 		return err
 	}
+	data = bytes.TrimPrefix(data, utf8BOM)
 
 	var products product.Envelope
 	var groups group.Envelope
